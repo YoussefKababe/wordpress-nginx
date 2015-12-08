@@ -3,9 +3,10 @@ server {
   server_name  localhost;
   client_max_body_size 20M;
   root /usr/share/nginx/html/wordpress;
+  index index.php;
 
   location / {
-    index index.php;
+    try_files $uri $uri/ /index.php?$args;
   }
 
   location ~ \.php$ {
