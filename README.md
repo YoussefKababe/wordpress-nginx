@@ -1,20 +1,20 @@
 Wordpres with Nginx Docker image
 ================================
 
-###Usage:
+### Usage:
 
 ```
 $ docker pull youssefkababe/wordpress-nginx
 $ docker run -d -p 80:80 -p 443:443 youssefkababe/wordpress-nginx
 ```
 
-#####Attach persistent/shared directories
+##### Attach persistent/shared directories
 
 ```
 $ docker run -d -p 80:80 -p 443:443 -v <wp-content-dir>:/usr/share/nginx/html/wordpress/wp-content <sites-enabled-dir>:/etc/nginx/sites-enabled -v <certs-dir>:/etc/nginx/certs -v <log-dir>:/var/log/nginx youssefkababe/wordpress-nginx
 ```
 
-###Usage with Docker compose
+### Usage with Docker compose
 
 ```yml
 blog:
