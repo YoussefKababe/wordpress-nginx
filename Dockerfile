@@ -22,7 +22,6 @@ RUN wget https://wordpress.org/latest.zip
 RUN unzip latest.zip -d /usr/share/nginx/html/
 RUN chown -R www-data:www-data /usr/share/nginx/html/wordpress
 WORKDIR /usr/share/nginx/html/wordpress
-RUN echo "if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') $_SERVER['HTTPS']='on';" >> wp-config.php
 RUN cp -R wp-content wpc
 
 ADD php/php.ini /etc/php5/fpm/php.ini
