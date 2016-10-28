@@ -27,18 +27,18 @@ server {
   #avoid php readfile()
   location ^~ /blogs.dir {
     internal;
-    alias /var/www/example.com/htdocs/wp-content/blogs.dir ;
+    alias /var/www/localhost/htdocs/wp-content/blogs.dir ;
     access_log off;     log_not_found off; expires max;
-  }
-
-  location / {
-    try_files $uri $uri/ /index.php?$args;
   }
   
   if (!-e $request_filename) {
     rewrite /wp-admin$ $scheme://$host$uri/ permanent;
-    rewrite ^/[_0-9a-zA-Z-]+(/wp-.*) $1 last;
-    rewrite ^/[_0-9a-zA-Z-]+(/.*\.php)$ $1 last;
+    rewrite ^(/[^/]+)?(/wp-.*) $2 last;
+    rewrite ^(/[^/]+)?(/.*\.php) $2 last;
+  }
+
+  location / {
+    try_files $uri $uri/ /index.php?$args;
   }
 
   location ~ \.php$ {
